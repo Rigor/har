@@ -43,7 +43,7 @@ module HAR
     end
 
     def dom_load_time
-      @dom_load_time ||= pages.first.timings.on_content_load
+      @dom_load_time ||= pages.map {|page| page.timings.on_content_load }.reduce(:+)
     end
 
     def safe_dom_load_time
@@ -51,7 +51,7 @@ module HAR
     end
 
     def page_load_time
-      @page_load_time ||= pages.first.timings.on_load
+      @page_load_time ||= pages.map {|page| page.timings.on_load }.reduce(:+)
     end
 
     def safe_page_load_time

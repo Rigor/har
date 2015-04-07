@@ -4,7 +4,7 @@ module HAR
   describe Stats do
     let(:ar) { Archive.from_file(har_path("browser-blocking-time")) }
     let (:stats) { ar.stats }
-    
+
     context 'metadata' do
       it 'has a creator' do
         stats.creator.should be_a(String)
@@ -55,9 +55,43 @@ module HAR
       end
     end
 
+    describe '#page_load_time' do
+      context 'single page' do
+        let(:ar)     { Archive.from_file(har_path("google.com")) }
+        let(:stats) { ar.stats }
+
+        it 'is the onload of the only page' do
+          stats.page_load_time.should == 245
+        end
+      end
+
+      context 'multiple pages' do
+        it 'sums the onload of all pages' do
+          stats.page_load_time.should == 14767
+        end
+      end
+    end
+
+    describe '#dom_load_time' do
+      context 'single page' do
+        let(:ar)     { Archive.from_file(har_path("google.com")) }
+        let(:stats) { ar.stats }
+
+        it 'is the onContentLoad of the only page' do
+          stats.dom_load_time.should == 90
+        end
+      end
+
+      context 'multiple pages' do
+        it 'sums the onContentLoad of all pages' do
+          stats.dom_load_time.should == 1061
+        end
+      end
+    end
+
     context 'non-zero load times' do
       let(:nonzero_stats) { Archive.from_file(har_path("google_nonzero")).stats }
-      
+
       it 'returns non-zero page load time' do
         nonzero_stats.page_load_time.should == -1
       end
