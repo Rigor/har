@@ -7,6 +7,10 @@ module HAR
       @entries = entries
     end
 
+    def aborted?
+      entries.first.aborted?
+    end
+
     # a little sugar
     alias_method :timings, :page_timings
 

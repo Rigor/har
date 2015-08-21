@@ -59,7 +59,8 @@ module HAR
     end
 
     def estimated_load_time
-      entries.map(&:time).reduce(:+)
+      seconds = (entries.last.started_date_time - entries.first.started_date_time) + (entries.last.time.to_f / 1000)
+      (seconds * 1000.0).round(0)
     end
 
     def page_size

@@ -97,7 +97,7 @@ module HAR
       end
 
       it 'provides entry-based page load time' do
-        nonzero_stats.safe_page_load_time.should > 0
+        nonzero_stats.safe_page_load_time.should eql(297)
       end
 
       it 'returns non-zero dom load time' do

@@ -12,5 +12,18 @@ module HAR
       entry.response.should be_kind_of(Response)
     end
 
+    describe '#aborted?' do
+      let(:aborted_entry) { Entry.new json(fixture_path("aborted_entry.json")) }
+      let(:entry) { Entry.new json(fixture_path("entry1.json")) }
+      it "is true" do
+        expect(aborted_entry.aborted?).to be_truthy
+      end
+
+      it "is false" do
+        expect(entry.aborted?).to be_falsy
+      end
+
+    end
+
   end # Entry
 end # HAR

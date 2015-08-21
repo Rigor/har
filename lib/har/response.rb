@@ -7,6 +7,10 @@ module HAR
       super(input)
     end
 
+    def aborted?
+      status_text.downcase == "aborted"
+    end
+
     def is_error?
       status >= 400
     end

@@ -1,0 +1,14 @@
+{
+  "status": 0,
+  "statusText": "Aborted",
+  "httpVersion": "",
+  "cookies": [],
+  "headers": [],
+  "content": {
+    "mimeType": "",
+    "size": -1
+  },
+  "redirectURL": "",
+  "headersSize": -1,
+  "bodySize": -1
+}
