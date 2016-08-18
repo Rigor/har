@@ -42,7 +42,10 @@ module HAR
       end
 
       it 'has file type metrics' do
-        [:image_files, :html_files, :css_files, :javascript_files, :flash_files, :other_files].each do |metric|
+        file_types = [:image_files, :html_files, :css_files, :javascript_files,
+                      :flash_files, :font_files, :video_files, :other_files]
+
+        file_types.each do |metric|
           stats.send(metric).should be_an(Array)
           stats.send("#{metric}_count").should be_an(Integer)
         end
