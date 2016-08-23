@@ -79,7 +79,7 @@ module HAR
       define_method("#{error_type}_errors_count") { count_files_of_type("#{error_type}_error") }
     end
 
-    [:image, :html, :css, :javascript, :flash, :other].each do |content_type|
+    [:image, :html, :css, :javascript, :flash, :font, :video, :other].each do |content_type|
       define_method("#{content_type}_files".to_sym) { files_of_type(content_type) }
       define_method("#{content_type}_files_count".to_sym) { count_files_of_type(content_type) }
       define_method("#{content_type}_files_size".to_sym) { sum_file_size_of_type(content_type) }
@@ -100,7 +100,7 @@ module HAR
     end
 
     def requests
-      @requests ||= entries.map(&:request)  
+      @requests ||= entries.map(&:request)
     end
 
     def responses

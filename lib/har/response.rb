@@ -51,8 +51,24 @@ module HAR
       is_content_type? 'flash'
     end
 
+    def is_font?
+      is_content_type? 'font'
+    end
+
+    def is_video?
+      is_content_type? 'video'
+    end
+
     def is_other?
-      !is_html? && !is_image? && !is_javascript? && !is_css? && !is_flash?
+      @is_other ||= content_types.none? do |content_type|
+        is_content_type?(content_type)
+      end
+    end
+
+    private
+
+    def content_types
+      @content_types ||= %w(html image javascript css flash font video)
     end
 
   end
