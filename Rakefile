@@ -7,20 +7,20 @@ RSpec::Core::RakeTask.new
 desc 'Regenerate the schema files'
 task :schema do
   require "json"
-  
+
   out    = File.expand_path("../lib/har/schemas", __FILE__)
   schema = JSON.parse(File.read("schema.json"))
-  
+
   # cleanup
-  Dir[File.join(out, "*.json")].each { |f| 
+  Dir[File.join(out, "*.json")].each { |f|
     rm f
   }
-  
+
   # generate
   schema.each do |type, schema|
-    path = File.join(out, type)
+    path = "#{File.join(out, type)}.json"
     puts path
-    
+
     File.open(path, "w") { |file|
       file << JSON.pretty_generate(schema)
     }
