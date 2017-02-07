@@ -28,7 +28,7 @@ module HAR
     end
 
     def is_content_type? type
-      !!content.mime_type.include?(type)
+      !!content.mime_type.include?(type) unless content.mime_type.nil?
     end
 
     def is_html?
