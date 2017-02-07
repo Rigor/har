@@ -157,7 +157,7 @@
         "properties": {
             "size": {"type": "integer", "required": true},
             "compression": {"type": "integer"},
-            "mimeType": {"type": "string", "required": true},
+            "mimeType": {"type": "string", "required": false},
             "text": {"type": "string"},
             "encoding": {"type": "string"},
             "comment": {"type": "string"}

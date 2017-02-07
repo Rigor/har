@@ -11,7 +11,7 @@
     },
     "mimeType": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "text": {
       "type": "string"
