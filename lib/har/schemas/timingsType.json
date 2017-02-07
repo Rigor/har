@@ -4,37 +4,37 @@
   "properties": {
     "dns": {
       "type": "integer",
-      "minimum": -1,
+      "min": -1,
       "required": true
     },
     "connect": {
       "type": "integer",
-      "minimum": -1,
+      "min": -1,
       "required": true
     },
     "blocked": {
       "type": "integer",
-      "minimum": -1,
+      "min": -1,
       "required": true
     },
     "send": {
       "type": "integer",
-      "minimum": -1,
+      "min": -1,
       "required": true
     },
     "wait": {
       "type": "integer",
-      "minimum": -1,
+      "min": -1,
       "required": true
     },
     "receive": {
       "type": "integer",
-      "minimum": -1,
+      "min": -1,
       "required": true
     },
     "ssl": {
       "type": "integer",
-      "minimum": -1
+      "min": -1
     },
     "comment": {
       "type": "string"
