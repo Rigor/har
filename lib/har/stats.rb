@@ -2,7 +2,7 @@ module HAR
   class Stats
     attr_reader :har
 
-    def initialize archive
+    def initialize(archive)
       @har = archive
     end
 
@@ -111,23 +111,23 @@ module HAR
       @timings ||= entries.map(&:timings)
     end
 
-    def files_of_type type
+    def files_of_type(type)
       responses.select {|r| r.send("is_#{type}?")}
     end
 
-    def count_files_of_type type
+    def count_files_of_type(type)
       files_of_type(type).count
     end
 
-    def sum_file_size_of_type type
+    def sum_file_size_of_type(type)
       type == :all ? responses.map(&:body_size).reduce(:+) : files_of_type(type).map(&:body_size).reduce(:+)
     end
 
-    def timings_of_type type
+    def timings_of_type(type)
       timings.map(&type.to_sym)
     end
 
-    def sum_timings_of_type type
+    def sum_timings_of_type(type)
       timings_of_type(type).reduce(:+)
     end
 
@@ -136,10 +136,12 @@ module HAR
     end
 
     def get_source_url
-      pages.first.is_redirect? ? entries[1].request.url.slice(0, 255) : entries.first.request.url.slice(0, 255)
+      pages.first.is_redirect? ? entries[1]&.request&.url&.slice(0, 255) : entries.first.request.url.slice(0, 255)
     end
 
-    def get_host url
+    def get_host(url)
+      return unless url.present?
+
       URI.parse(URI.encode(url)).host
     end
   end
