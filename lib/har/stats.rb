@@ -136,7 +136,7 @@ module HAR
     end
 
     def get_source_url
-      pages.first.is_redirect? ? entries[1]&.request&.url&.slice(0, 255) : entries.first.request.url.slice(0, 255)
+      pages.first.is_redirect? ? entries[1]&.request&.url&.slice(0, 255) : entries.first&.request&.url&.slice(0, 255)
     end
 
     def get_host(url)
