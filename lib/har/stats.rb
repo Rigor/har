@@ -140,7 +140,7 @@ module HAR
     end
 
     def get_host(url)
-      return if url.nil?
+      return if url.nil? || url.empty?
 
       URI.parse(URI.encode(url)).host
     end
