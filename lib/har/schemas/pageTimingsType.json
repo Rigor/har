@@ -4,11 +4,11 @@
   "properties": {
     "onContentLoad": {
       "type": "number",
-      "minimum": -1
+      "min": -1
     },
     "onLoad": {
       "type": "number",
-      "minimum": -1
+      "min": -1
     },
     "comment": {
       "type": "string"
