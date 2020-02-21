@@ -1,6 +1,7 @@
 {
   "id": "pageType",
   "description": "Exported web page",
+  "optional": true,
   "properties": {
     "startedDateTime": {
       "type": "string",
@@ -10,6 +11,7 @@
     },
     "id": {
       "type": "string",
+      "unique": true,
       "required": true
     },
     "title": {
